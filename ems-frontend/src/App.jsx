@@ -1,0 +1,29 @@
+import './App.css'
+import EmployeeComponent from './components/EmployeeComponent';
+import FooterComponent from './components/FooterComponent'
+import HearderComponent from './components/HearderComponent'
+import ListEmployeeComponent from './components/ListEmployeeComponent'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+function App() {
+
+  return (
+    <>
+      <BrowserRouter>
+        <HearderComponent />
+        <Routes>
+          <Route path='/' element={ <ListEmployeeComponent /> }></Route>
+          <Route path='/employees' element={ <ListEmployeeComponent /> }></Route>
+          <Route path='/add-employee' element={ <EmployeeComponent /> }></Route>
+          <Route path='/update-employee/:id' element={ <EmployeeComponent /> }></Route>
+          
+
+        </Routes>
+        <FooterComponent />
+      </BrowserRouter>
+
+    </>
+  )
+}
+
+export default App
