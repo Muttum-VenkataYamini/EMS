@@ -1,8 +1,8 @@
-package com.mvyamini.ems_backend.Utils;
+package com.yamini.ems.employee.Utils;
 
-import com.mvyamini.ems_backend.entity.Employee;
-import com.mvyamini.ems_backend.exception.ResourceNotFoundException;
-import com.mvyamini.ems_backend.repository.EmployeeRepository;
+import com.yamini.ems.employee.entity.Employee;
+import com.yamini.ems.employee.exception.ResourceNotFoundException;
+import com.yamini.ems.employee.repository.EmployeeRepository;
 
 public class EmployeeUtil {
     public static Employee findEmployeeByIdOrThrow(EmployeeRepository employeeRepository, Long id){
