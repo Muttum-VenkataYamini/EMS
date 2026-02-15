@@ -10,9 +10,11 @@ spring:
     password: Y@minibalaji81189
   jpa:
     hibernate:
-      dialect: org.hibernate.dialect.MySQLDialect
-      ddl-auto: update             # or validate/create in prod
-    show-sql: true                 # for debugging
+      ddl-auto: update              # or validate in prod
+    show-sql: true                  # debug only
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
 
 eureka:
   client:
