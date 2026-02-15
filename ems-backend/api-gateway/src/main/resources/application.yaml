@@ -1,0 +1,31 @@
+server:
+  port: 8080                 # Gateway standard port
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true      # Optional: auto-route by service name (e.g. /EMPLOYEE-SERVICE/**)
+      routes:                # Explicit routes (recommended for control)
+        - id: employee-service
+          uri: lb://EMPLOYEE-SERVICE   # lb:// = load-balanced via Eureka
+          predicates:
+            - Path=/employees/**,/api/employees/**
+          filters:
+            - StripPrefix=1            # Remove /employees from forwarded path if needed
+        - id: department-service
+          uri: lb://DEPARTMENT-SERVICE
+          predicates:
+            - Path=/departments/**,/api/departments/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
